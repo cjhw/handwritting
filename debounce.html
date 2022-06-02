@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="layout"></div>
+    <button onclick="getUserActionDebounce()">防抖</button>
+    <script src="./函数防抖.js"></script>
+    <script>
+      var node = document.getElementById('layout')
+      var count = 1
+      function getUserAction(e) {
+        console.log(this, e) // 分别打印：node 这个节点 和 MouseEvent
+        node.innerHTML = count++
+      }
+      getUserActionDebounce = debounce(getUserAction, 1000)
+    </script>
+  </body>
+</html>
