@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="a">
+      <span>1</span>
+      <p>2</p>
+      <a>3</a>
+      <div>4</div>
+    </div>
+
+    <script>
+      // 常规解法
+      let element = document.getElementById('a')
+      function reverseChildren1(element) {
+        let l = element.childNodes.length
+        while (l-- > 0) {
+          element.appendChild(element.childNodes[l])
+        }
+      }
+
+      // 骚操作
+      function reverseChildren2(element) {
+        let range = new Range()
+        range.selectNodeContents(element)
+
+        let fragment = range.extractContents()
+        let l = fragment.childNodes.length
+        while (l-- > 0) {
+          fragment.appendChild(fragment.childNodes[l])
+        }
+
+        element.appendChild(fragment)
+      }
+
+      reverseChildren2(element)
+    </script>
+  </body>
+</html>
