@@ -15,4 +15,5 @@ let person = {
   age: 18,
   sex: '你猜',
 }
+
 console.log(render(template, person))
